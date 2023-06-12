@@ -3,8 +3,8 @@ cw = random.randrange(4, 7)
 ch = random.randrange(3, 10)
 pw = 50
 ph = 50
-w=400
-h=400
+w=pw*cw+100
+h=ph*ch+10
 count = 0
 water = []
 islands = []
@@ -28,7 +28,7 @@ def setup():
                 islands.append(canvas.create_image(pw*x, ph*y, anchor="nw", image=img1))
             else:
                 water.append(canvas.create_image(pw*x,  ph*y, anchor="nw", image=img))
-    canvas.create_image(w-50,2,anchor="nw",image=img4,tags="switcher")
+    canvas.create_image(pw*cw+50,2,anchor="nw",image=img4,tags="switcher")
 
 def changer(e):
     global water,count
@@ -70,7 +70,7 @@ def switch(e):
 def counter():
     global count
     canvas.delete('pocitac')
-    canvas.create_text(w-75, 25, text=count,font="Arial 20",tag="pocitac")
+    canvas.create_text(pw*cw+25, 25, text=count,font="Arial 20",tag="pocitac")
 
 canvas.tag_bind("switcher","<Button-1>",switch)
 canvas.bind("<Button-1>", changer)
